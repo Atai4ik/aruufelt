@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
@@ -28,7 +29,7 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    text = models.TextField()
+    text = RichTextField()
     author = models.ForeignKey(User, related_name='posts', on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to='articles/')
     category = models.ForeignKey(Category, related_name='post', on_delete=models.SET_NULL, null=True)
